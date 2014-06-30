@@ -36,8 +36,8 @@
     "parambulator": "~0.1.9",
     "patrun": "~0.1.5",
     "rolling-stats": "~0.1.0",
-    "seneca-transport": "~0.1.2",
-    "seneca-web": "~0.1.3",
+    "seneca-transport": "*",
+    "seneca-web": "*",
     "underscore": "~1.6.0",
     "use-plugin": "~0.1.4"
   },
