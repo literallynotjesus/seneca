@@ -1756,8 +1756,6 @@ function make_seneca( initial_options ) {
       var args = spec.pattern
       var cb   = spec.done
 
-      args = _.extend({},args,fixedargs)
-
       act.call(this,args,cb)
 
       return delegate
@@ -1777,7 +1775,7 @@ function make_seneca( initial_options ) {
       return strdesc
     }
 
-    delegate.fixedargs = _.extend({},fixedargs,self.fixedargs)
+    delegate.fixedargs = _.extend({},self.fixedargs,fixedargs)
     
     delegate.delegate = function(further_fixedargs) {
       var args = _.extend({},delegate.fixedargs,further_fixedargs||{})
