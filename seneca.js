@@ -1507,9 +1507,11 @@ function make_seneca( initial_options ) {
                       duration, callargs, prior_ctxt ) 
   {
     var call_cb = true
-
     if( !err.seneca ) {
-      err = error(err,'act_execute',_.extend(
+      // nherment: the commented code below change the error as it is passed through
+      //           services. It makes it hard for the client code to act on that error
+      //           in a reliable way
+      /*err = error(err,'act_execute',_.extend(
         {},
         err.details,
         {
@@ -1521,6 +1523,10 @@ function make_seneca( initial_options ) {
         }))
 
       result[0] = err
+      */
+
+      result[0] = err.orig ? err.orig : err
+      
     }
 
     // Special legacy case for seneca-perm
