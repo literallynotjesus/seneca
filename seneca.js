@@ -1538,8 +1538,10 @@ function make_seneca( initial_options ) {
     err.details = err.details || {}
     err.details.plugin = err.details.plugin || {}
 
-    logging.log_act_err( root, {actid:callargs.actid$,duration:duration}, 
-                         actmeta, callargs, prior_ctxt, err )
+    if(err.critical !== false && (!err.orig || err.orig.critical !== false)) {
+      logging.log_act_err( root, {actid:callargs.actid$,duration:duration}, 
+                           actmeta, callargs, prior_ctxt, err )
+    }
 
     instance.emit('act-err',callargs,err)
 
